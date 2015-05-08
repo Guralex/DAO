@@ -174,33 +174,33 @@ private void getString(int i) {
 	
 	@Override
 	public boolean delete(Weather entity) {
-		// TODO Auto-generated method stub
+		System.out.println("Я ленивый");
 		return false;
 	}
 
 	@Override
 	public boolean create(Weather entity) {
-		// TODO Auto-generated method stub
+		System.out.println("Я ленивый");
 		return false;
 	}
 
 	@Override
 	public Weather update(Weather entity) {
-		// TODO Auto-generated method stub
+		System.out.println("Я ленивый");
 		return null;
 	}
 
 
 	@Override
 	public Weather findEntityById(Integer Id) {
-		// TODO Auto-generated method stub
+		System.out.println("Я ленивый");
 		return null;
 	}
 
 
 	@Override
 	public boolean delete(Integer Id) {
-		// TODO Auto-generated method stub
+		System.out.println("Я ленивый");
 		return false;
 	}
 
