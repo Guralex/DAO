@@ -13,8 +13,12 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		WeatherDAO w= new WeatherDAO();
-		    
-		    System.out.println(w.averByArea(200)); 
+		Weather weather = new Weather(0, 21, 0, "ukraine", "2015-05-08");   
+		
+		//w.create(weather);
+		//w.delete(10);
+		 
+		
 		}
 
 }

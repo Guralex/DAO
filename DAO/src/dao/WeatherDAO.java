@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WeatherDAO extends AbstractDAO<Integer, Weather> {
+	
+	  public static final String SQL_DEL="DELETE FROM `weatherbase`.`weather` WHERE `weather`.`id` = ?";
+	  public static final String SQL_ADD="INSERT INTO `weatherbase`.`weather` (`id`, `region`, `date`, `temp`, `water`) VALUES (NULL, ?, ?, ?, ?);";
+	  
 	  public static final String SQL_SELECT_ALL_ABONENTS="SELECT * FROM weather";
 	  public static final String SQL_SELECT_WEATHER_BY_REG=
 			  "SELECT * FROM weather WHERE region=?";
@@ -180,8 +184,27 @@ private void getString(int i) {
 
 	@Override
 	public boolean create(Weather entity) {
-		System.out.println("Я ленивый");
+		
+		Connection cn=null;
+		PreparedStatement st=null;
+		try {
+		cn=ConnectorDB.getConnection();
+		st=cn.prepareStatement(SQL_ADD);
+		st.setString(1, entity.getRegion());
+		st.setString(2, entity.getDate());
+		st.setInt(3, entity.getTemp());
+		st.setInt(4, entity.getWater());
+		st.executeUpdate();
+		
+		
+		
+		} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		System.err.println("SQL exception (request or table failed):"+e);
 		return false;
+		}
+		System.out.println("OK");
+		return true;
 	}
 
 	@Override
@@ -200,8 +223,24 @@ private void getString(int i) {
 
 	@Override
 	public boolean delete(Integer Id) {
-		System.out.println("Я ленивый");
+		Connection cn=null;
+		PreparedStatement st=null;
+		try {
+		cn=ConnectorDB.getConnection();
+		cn=ConnectorDB.getConnection();
+		st=cn.prepareStatement(SQL_DEL);
+		st.setInt(1, Id);
+		
+		st.executeUpdate();
+		
+		
+		} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		System.err.println("SQL exception (request or table failed):"+e);
 		return false;
+		}
+		System.out.println("OK");
+		return true;
 	}
 
 	}
